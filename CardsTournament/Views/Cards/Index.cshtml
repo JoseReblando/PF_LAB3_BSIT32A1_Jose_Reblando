@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CardsTournament.Models.Card>
+
+@{
+    ViewData["Title"] = "Cards";
+}
+
+<h1 class="mb-4">Cards</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Card</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="~/images/characters/@item.CharacterImage" class="card-img-top" alt="@item.Name" style="height:250px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text"><strong>Rarity:</strong> @item.Rarity</p>
+                    <p class="card-text">@item.Description</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-info text-white" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
